@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MulticolorViewController.swift
 //  Multicolor area
 //
 //  Created by Marat on 27.03.2021.
@@ -22,12 +22,21 @@ class MulticolorViewController: UIViewController {
     @IBOutlet weak var redColorTextField: UITextField!
     @IBOutlet weak var greenColorTextField: UITextField!
     @IBOutlet weak var blueColorTextField: UITextField!
+    // MARK: - Public properties
+    var delegate: SettingMulticolorViewController!
+    
+    var colorRedVC: CGFloat!
+    var colorGreenVC: CGFloat!
+    var colorBlueVC: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //View
         multiViewColor.layer.cornerRadius = 15
+        sliderRedColor.value = Float(colorRedVC)
+        sliderGreenColor.value = Float(colorGreenVC)
+        sliderBlueColor.value = Float(colorBlueVC)
         setColor()
         setValue(for: labelRedColor, labelGreenColor, labelBlueColor)
         setValueTextField(for: redColorTextField, greenColorTextField, blueColorTextField)
@@ -43,8 +52,15 @@ class MulticolorViewController: UIViewController {
         sliderBlueColor.minimumTrackTintColor = .blue
         sliderBlueColor.maximumTrackTintColor = .darkGray
         
+        //Add done button on keyboard
+        addDoneButtonOnKeyboard()
+        
+        //Text fields
+        redColorTextField.delegate = self
+        greenColorTextField.delegate = self
+        blueColorTextField.delegate = self
     }
-    
+    // MARK: - Action sliders
     @IBAction func rgbSlider(_ sender: UISlider) {
         setColor()
         
@@ -60,24 +76,16 @@ class MulticolorViewController: UIViewController {
             setValueTextField(for: blueColorTextField)
         }
     }
-    
-    @IBAction func rgbTextField(_ sender: UITextField) {
-        switch sender {
-        case redColorTextField:
-            let textField = Float(sender.text!)
-            sliderRedColor.value = textField!
-            rgbSlider(sliderRedColor)
-        case greenColorTextField:
-            let textField = Float(sender.text!)
-            sliderGreenColor.value = textField!
-            rgbSlider(sliderGreenColor)
-        default:
-            let textField = Float(sender.text!)
-            sliderBlueColor.value = textField!
-            rgbSlider(sliderBlueColor)
-        }
+    // MARK: Action button Done
+    @IBAction func doneActionButton() {
+        view.endEditing(true)
+        delegate.setColorValue(setRed: CGFloat(sliderRedColor.value),
+                               setGreen: CGFloat(sliderGreenColor.value),
+                               setBlue: CGFloat(sliderBlueColor.value)
+        )
+        dismiss(animated: true)
     }
-    
+    // MARK: Setup color on multiViewColor
     private func setColor() {
         multiViewColor.backgroundColor = UIColor(
             red: CGFloat(sliderRedColor.value),
@@ -86,7 +94,7 @@ class MulticolorViewController: UIViewController {
             alpha: 1
         )
     }
-    
+    // MARK: Setup values on labels
     private func setValue(for labels: UILabel...) {
         labels.forEach { label in
             switch label {
@@ -99,7 +107,7 @@ class MulticolorViewController: UIViewController {
             }
         }
     }
-    
+    // MARK: Setup values on text fields
     private func setValueTextField(for textField: UITextField...) {
         textField.forEach { textField in
             switch textField {
@@ -112,17 +120,66 @@ class MulticolorViewController: UIViewController {
             }
         }
     }
-    
+    // MARK: Setup value numbers
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
     
 }
 
-// MARK: - Work with keyboard
+// MARK: - Work with keyboard and text fields
 extension MulticolorViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
+    }
+    
+    func addDoneButtonOnKeyboard() {
+        let doneToolBar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0,
+                                                                  y: 0,
+                                                                  width: UIScreen.main.bounds.width,
+                                                                  height: 50)
+        )
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                        target: nil,
+                                        action: nil
+        )
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done",
+                                                    style: .done,
+                                                    target: self,
+                                                    action: #selector(doneButtonAction)
+        )
+        
+        let items = [flexSpace, done]
+        doneToolBar.items = items
+        doneToolBar.sizeToFit()
+        
+        redColorTextField.inputAccessoryView = doneToolBar
+        greenColorTextField.inputAccessoryView = doneToolBar
+        blueColorTextField.inputAccessoryView = doneToolBar
+    }
+    
+    @objc func doneButtonAction() {
+        redColorTextField.resignFirstResponder()
+        greenColorTextField.resignFirstResponder()
+        blueColorTextField.resignFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let newValue = textField.text else { return }
+        guard let numberValue = Float(newValue) else { return }
+        
+        switch textField {
+        case redColorTextField:
+            sliderRedColor.value = numberValue
+            rgbSlider(sliderRedColor)
+        case greenColorTextField:
+            sliderGreenColor.value = numberValue
+            rgbSlider(sliderGreenColor)
+        default:
+            sliderBlueColor.value = numberValue
+            rgbSlider(sliderBlueColor)
+        }
+        
     }
 }

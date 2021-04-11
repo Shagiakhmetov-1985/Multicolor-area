@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		792B76892620A230005C9362 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792B76882620A230005C9362 /* MainViewController.swift */; };
+		792B76892620A230005C9362 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792B76882620A230005C9362 /* StartScreenViewController.swift */; };
 		79CD377B260FBE5B007E8753 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD377A260FBE5B007E8753 /* AppDelegate.swift */; };
 		79CD377D260FBE5B007E8753 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD377C260FBE5B007E8753 /* SceneDelegate.swift */; };
 		79CD377F260FBE5B007E8753 /* MulticolorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD377E260FBE5B007E8753 /* MulticolorViewController.swift */; };
@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		792B76882620A230005C9362 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		792B76882620A230005C9362 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		79CD3777260FBE5B007E8753 /* Multicolor area.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Multicolor area.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79CD377A260FBE5B007E8753 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79CD377C260FBE5B007E8753 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +39,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79021C5F262224DE008D3C19 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				79CD3780260FBE5B007E8753 /* Main.storyboard */,
+				79CD3785260FBE5D007E8753 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		79021C60262224EB008D3C19 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				792B76882620A230005C9362 /* StartScreenViewController.swift */,
+				79CD377E260FBE5B007E8753 /* MulticolorViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		79021C6226222522008D3C19 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				79CD377A260FBE5B007E8753 /* AppDelegate.swift */,
+				79CD377C260FBE5B007E8753 /* SceneDelegate.swift */,
+				79CD3788260FBE5D007E8753 /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		79021C642622252B008D3C19 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79CD3783260FBE5D007E8753 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		79CD376E260FBE5B007E8753 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +94,10 @@
 		79CD3779260FBE5B007E8753 /* Multicolor area */ = {
 			isa = PBXGroup;
 			children = (
-				79CD377A260FBE5B007E8753 /* AppDelegate.swift */,
-				79CD377C260FBE5B007E8753 /* SceneDelegate.swift */,
-				792B76882620A230005C9362 /* MainViewController.swift */,
-				79CD377E260FBE5B007E8753 /* MulticolorViewController.swift */,
-				79CD3780260FBE5B007E8753 /* Main.storyboard */,
-				79CD3783260FBE5D007E8753 /* Assets.xcassets */,
-				79CD3785260FBE5D007E8753 /* LaunchScreen.storyboard */,
-				79CD3788260FBE5D007E8753 /* Info.plist */,
+				79021C60262224EB008D3C19 /* View Controllers */,
+				79021C5F262224DE008D3C19 /* Storyboards */,
+				79021C6226222522008D3C19 /* Supporting */,
+				79021C642622252B008D3C19 /* Resources */,
 			);
 			path = "Multicolor area";
 			sourceTree = "<group>";
@@ -143,7 +175,7 @@
 				79CD377F260FBE5B007E8753 /* MulticolorViewController.swift in Sources */,
 				79CD377B260FBE5B007E8753 /* AppDelegate.swift in Sources */,
 				79CD377D260FBE5B007E8753 /* SceneDelegate.swift in Sources */,
-				792B76892620A230005C9362 /* MainViewController.swift in Sources */,
+				792B76892620A230005C9362 /* StartScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4AD5RA4FS;
-				INFOPLIST_FILE = "Multicolor area/Info.plist";
+				INFOPLIST_FILE = "Multicolor area/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4AD5RA4FS;
-				INFOPLIST_FILE = "Multicolor area/Info.plist";
+				INFOPLIST_FILE = "Multicolor area/Supporting/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
