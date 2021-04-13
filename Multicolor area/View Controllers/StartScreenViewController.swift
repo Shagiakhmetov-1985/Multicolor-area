@@ -8,22 +8,14 @@
 import UIKit
 
 protocol SettingMulticolorViewController {
-    func setColorValue(setRed: CGFloat, setGreen: CGFloat, setBlue: CGFloat)
+    func setColorValue(_ color: UIColor)
 }
 
 class StartScreenViewController: UIViewController {
     
-    @IBOutlet var mainView: UIView!
-    
-    private var colorRed: CGFloat = 1
-    private var colorGreen: CGFloat = 1
-    private var colorBlue: CGFloat = 1
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let settingsVC = segue.destination as? MulticolorViewController else { return }
-        settingsVC.colorRedVC = colorRed
-        settingsVC.colorGreenVC = colorGreen
-        settingsVC.colorBlueVC = colorBlue
+        settingsVC.currentColor = view.backgroundColor
         settingsVC.delegate = self
     }
     
@@ -34,13 +26,7 @@ class StartScreenViewController: UIViewController {
 
 // MARK: - Class from protocol
 extension StartScreenViewController: SettingMulticolorViewController {
-    func setColorValue(setRed: CGFloat, setGreen: CGFloat, setBlue: CGFloat) {
-        mainView.backgroundColor = UIColor(red: setRed,
-                                           green: setGreen,
-                                           blue: setBlue,
-                                           alpha: 1)
-        colorRed = setRed
-        colorGreen = setGreen
-        colorBlue = setBlue
+    func setColorValue(_ color: UIColor) {
+        view.backgroundColor = color
     }
 }

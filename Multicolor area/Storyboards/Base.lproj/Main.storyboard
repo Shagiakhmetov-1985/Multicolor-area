@@ -25,9 +25,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mainView" destination="e7i-hK-ROp" id="gox-3p-XnI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCp-zd-B1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,7 +42,7 @@
                                 <rect key="frame" x="27" y="69" width="360" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-69-TSu">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="jcV-69-TSu">
                                 <rect key="frame" x="28" y="242" width="358.5" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="B9F-GN-5VX">
@@ -75,7 +72,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="xzX-9d-Gyl">
-                                        <rect key="frame" x="57" y="0.0" width="38" height="150"/>
+                                        <rect key="frame" x="66" y="0.0" width="38" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjB-Ps-Fnx">
                                                 <rect key="frame" x="0.0" y="0.0" width="38" height="27"/>
@@ -101,22 +98,22 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="psG-Eb-ani">
-                                        <rect key="frame" x="98" y="0.0" width="209.5" height="150"/>
+                                        <rect key="frame" x="116" y="0.0" width="182.5" height="150"/>
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UNf-0Y-b68">
-                                                <rect key="frame" x="-2" y="0.0" width="213.5" height="31"/>
+                                                <rect key="frame" x="-2" y="0.0" width="186.5" height="31"/>
                                                 <connections>
                                                     <action selector="rgbSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="bAe-Uw-6oj"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3sz-OQ-roE">
-                                                <rect key="frame" x="-2" y="60" width="213.5" height="31"/>
+                                                <rect key="frame" x="-2" y="60" width="186.5" height="31"/>
                                                 <connections>
                                                     <action selector="rgbSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="YJn-jh-EA3"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="yxS-Xq-vqQ">
-                                                <rect key="frame" x="-2" y="120" width="213.5" height="31"/>
+                                                <rect key="frame" x="-2" y="120" width="186.5" height="31"/>
                                                 <connections>
                                                     <action selector="rgbSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="tFa-oX-fdq"/>
                                                 </connections>
